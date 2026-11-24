@@ -1,0 +1,8 @@
+{
+  "name": "jiangyutong-github-io",
+  "compatibility_date": "2026-11-24",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public"
+  }
+}

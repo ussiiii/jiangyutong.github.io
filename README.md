@@ -4,7 +4,7 @@ GitHub 仓库：https://github.com/ussiiii/jiangyutong.github.io
 
 ## 项目状态
 
-当前完成仓库初始化，尚未创建网站页面或配置部署。
+基础作品集是纯静态网站，首页和样式位于 `public/`。
 
 ## 开发与版本管理
 
@@ -16,4 +16,4 @@ GitHub 仓库：https://github.com/ussiiii/jiangyutong.github.io
 ## 部署目标
 
 最终使用 Cloudflare Workers 部署，提供 `workers.dev` 公开访问网址。
-具体构建命令与部署配置将在网站技术方案确定后添加。
+Workers Builds 使用 `main` 分支，根目录为 `/`，构建命令留空，部署命令为 `npx wrangler deploy`。Wrangler 从 `public/` 发布静态资源。
