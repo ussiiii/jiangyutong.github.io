@@ -6,15 +6,22 @@ let suppressClick = false;
 board.classList.add('is-interactive');
 document.querySelector('.explore').textContent = '拖动棋子，或点击查看 ↓';
 
+const opening = board.closest('.opening');
+opening.addEventListener('focusin', () => {
+  opening.classList.add('entrance-finished');
+}, { once: true });
+
 board.addEventListener('pointerdown', (event) => {
   if (drag || !event.isPrimary || event.button !== 0) return;
   suppressClick = false;
   const piece = event.target.closest('.piece');
   if (!piece) return;
   const style = getComputedStyle(piece);
+  const screenToBoard = new DOMMatrixReadOnly(getComputedStyle(board).transform).inverse();
   drag = {
     piece,
     pointerId: event.pointerId,
+    screenToBoard,
     x: event.clientX,
     y: event.clientY,
     row: Number(style.gridRowStart),
@@ -34,10 +41,12 @@ window.addEventListener('pointermove', (event) => {
     drag.piece.setPointerCapture(event.pointerId);
   }
 
+  // Project pointer motion back onto the tilted board before snapping to cells.
+  const motion = drag.screenToBoard.transformPoint({ x: dx, y: dy, w: 0 });
   const cellWidth = board.clientWidth / 4;
   const cellHeight = board.clientHeight / 4;
-  const x = Math.max((1 - drag.column) * cellWidth, Math.min((4 - drag.column) * cellWidth, dx));
-  const y = Math.max((1 - drag.row) * cellHeight, Math.min((4 - drag.row) * cellHeight, dy));
+  const x = Math.max((1 - drag.column) * cellWidth, Math.min((4 - drag.column) * cellWidth, motion.x));
+  const y = Math.max((1 - drag.row) * cellHeight, Math.min((4 - drag.row) * cellHeight, motion.y));
   drag.piece.style.setProperty('--drag-x', `${x}px`);
   drag.piece.style.setProperty('--drag-y', `${y}px`);
 });
