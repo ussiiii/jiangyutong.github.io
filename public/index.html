@@ -6,32 +6,43 @@
   <meta name="description" content="Jiang Yutong 的 UI 与交互设计作品集">
   <title>Jiang Yutong · 设计作品集</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="./board.js" defer></script>
 </head>
 <body>
   <header class="site-header">
     <a href="./">Jiang Yutong</a>
     <nav aria-label="主导航">
-      <a href="#work">项目</a>
+      <a href="#board">项目</a>
       <a href="#about">关于我</a>
       <a href="#contact">联系</a>
     </nav>
   </header>
   <main>
-    <div class="intro">
-      <p>UI / 交互设计</p>
-      <h1 lang="en">Jiang Yutong</h1>
+    <div class="opening">
+      <div class="intro">
+        <p>UI / 交互设计作品集</p>
+        <h1 lang="en">Jiang<br>Yutong<span>.</span></h1>
+        <a class="explore" href="#board">探索项目 ↓</a>
+      </div>
+      <nav class="board" id="board" aria-label="棋盘导航">
+        <a draggable="false" class="piece wayfolio" href="#wayfolio" lang="en"><span class="token" aria-hidden="true">↗</span>Wayfolio</a>
+        <a draggable="false" class="piece wardrobe" href="#wardrobe" lang="en"><span class="token" aria-hidden="true">✳</span>Smart Wardrobe</a>
+        <a draggable="false" class="piece womb" href="#womb" lang="en"><span class="token" aria-hidden="true">◉</span>Metal Womb</a>
+        <a draggable="false" class="piece about" href="#about" lang="en"><span class="token" aria-hidden="true">J</span>About Me</a>
+        <a draggable="false" class="piece contact" href="#contact" lang="en"><span class="token" aria-hidden="true">@</span>Contact Me</a>
+      </nav>
     </div>
     <section id="work" aria-labelledby="work-title">
       <h2 id="work-title">精选项目</h2>
-      <article>
+      <article id="wayfolio">
         <h3 lang="en">Wayfolio</h3>
         <p>为来华游客设计的旅行服务，连接行前规划、旅途中的探索与可以带回家的纸质旅行套装。</p>
       </article>
-      <article>
+      <article id="wardrobe">
         <h3 lang="en">Smart Wardrobe</h3>
         <p>一套智能衣橱功能图标，涵盖衣物状态感知、个人风格识别和天气穿搭预测。</p>
       </article>
-      <article>
+      <article id="womb">
         <h3 lang="en">Metal Womb</h3>
         <p>一件面向 2050 年的推想性交互装置，通过探头与心跳模拟引导观众体验和思考。</p>
       </article>
